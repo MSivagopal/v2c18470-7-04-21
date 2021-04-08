@@ -1,0 +1,68 @@
+package assign;
+
+import java.util.ArrayList;
+import java.util.function.BiPredicate;
+
+public class BiPredicateProductArryalist1 {
+
+	public static void main(String[] args) {
+		ArrayList<ProductA> prod = new ArrayList<ProductA>();
+		prod.add(new ProductA("Action", 25, 25, 10));
+		prod.add(new ProductA("Puma", 30, 20, 7));
+		prod.add(new ProductA("Woodland", 100, 50, 8));
+		prod.add(new ProductA("Nick", 30, 40, 5));
+		prod.add(new ProductA("Reebok", 20, 20, 10));
+
+		ArrayList<ProductB> prod2 = new ArrayList<ProductB>();
+		prod2.add(new ProductB("Bata", 25, 10));
+		prod2.add(new ProductB("Addidas", 40, 7));
+		prod2.add(new ProductB("Brooks", 70, 8));
+		prod2.add(new ProductB("NewBalance", 20, 5));
+		prod2.add(new ProductB("Metro", 25, 10));
+
+		BiPredicate<Integer, Integer> ct = (ct1, ct2) -> (ct1 + ct2) > 50;
+		for (ProductA c : prod) {
+			if (ct.test(c.shoe_price, c.socks_price)) {
+				System.out.println("This product is costly " + c.shoe_price + " " + c.socks_price);
+			} else {
+				System.out.println("Cheap Product " + c.shoe_price + " " + c.socks_price);
+			}
+		}
+		System.out.println(" ");
+		BiPredicate<Integer, Integer> ctt = (ct1, ct2) -> (ct1 <= 50 && ct2 >= 5);
+		for (ProductB c1 : prod2) {
+			if (ctt.test(c1.price, c1.size)) {
+				System.out.println("The Best Product " + c1.product_Name + " " + c1.price + " " + c1.size);
+			} else {
+				System.out.println("The Worst Product " + c1.product_Name + " " + c1.price + " " + c1.size);
+			}
+		}
+
+	}
+
+}
+
+class ProductA {
+	String product_Name;
+	int shoe_price, socks_price, size;
+
+	public ProductA(String product_Name, int shoe_price, int socks_price, int size) {
+		super();
+		this.product_Name = product_Name;
+		this.shoe_price = shoe_price;
+		this.socks_price = socks_price;
+		this.size = size;
+	}
+}
+
+class ProductB {
+	String product_Name;
+	int price, size;
+
+	public ProductB(String product_Name, int price, int size) {
+		super();
+		this.product_Name = product_Name;
+		this.price = price;
+		this.size = size;
+	}
+}

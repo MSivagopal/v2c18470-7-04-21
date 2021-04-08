@@ -1,0 +1,44 @@
+package assign;
+
+import java.util.ArrayList;
+import java.util.function.Predicate;
+
+public class PredicateStudentArraylist {
+
+	public static void main(String[] args) {
+		ArrayList<Student34> stud = new ArrayList<Student34>();
+		stud.add(new Student34("Sivagopal", 5501, 18));
+		stud.add(new Student34("Soundarya", 5514, 18));
+		stud.add(new Student34("Shyaam", 5507, 14));
+		stud.add(new Student34("Surya", 5505, 19));
+		stud.add(new Student34("Suriya", 5505, 17));
+
+		Predicate<Student34> peo = (ple) -> (ple.stud_age >= 18);
+
+		for (Student34 ple : stud) {
+			if (peo.test(ple)) {
+				System.out.println(ple.stud_Name + " " + "- Only these Students are allowed to watch movies");
+			}
+		}
+		Predicate<Student34> peo1 = (ple) -> (ple.stud_age >= 18);
+
+		for (Student34 ple : stud) {
+			if (peo1.test(ple)) {
+				// System.out.println(ple.stud_id+ " " + ple.stud_Name+ " " + ple.stud_age);
+				System.out.println(ple.stud_Name + " " + ple.stud_age);
+			}
+		}
+	}
+}
+
+class Student34 {
+	String stud_Name;
+	int stud_id, stud_age;
+
+	public Student34(String stud_Name, int stud_id, int stud_age) {
+		super();
+		this.stud_Name = stud_Name;
+		this.stud_id = stud_id;
+		this.stud_age = stud_age;
+	}
+}
